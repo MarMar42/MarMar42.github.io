@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewpoint" content="width-device-width, initial-scale=1.0" />
+		<http-equiv="X-UA-Compatible" content="ie-edge" />
+		<title> Vending Machine</title>
+	</head>
+	<body>
+		<h1>Vending Machine</h1>
+
+		<form>
+			<span>50c</span> 
+			<input 
+			type="text" 
+			name="fifty_cent" 
+			id="fifty_cent" 
+			palceholder="0" 
+			value="0"
+			oninput="tally()"
+			/>
+			<br>
+			<span>R1</span> 
+			<input 
+			type="text" 
+			name="one_rand" 
+			id="one_rand" 
+			palceholder="0" 
+			value="0"
+			oninput="tally()"
+			/>
+			<br>
+			<span>R2</span> 
+			<input 
+			type="text" 
+			name="two_rand" 
+			id="two_rand" 
+			palceholder="0" 
+			value="0"
+			oninput="tally()"
+			/>
+			<br>
+			<span>R5</span> 
+			<input 
+			type="text" 
+			name="five_rand" 
+			id="five_rand" 
+			palceholder="0" 
+			value="0"
+			oninput="tally()"
+			/>
+			
+		</form>
+		
+		<button value="Coke" id="coke">Coke</button>
+		<button value="Sprite" id="sprite">Sprite</button>
+		<button value="Water" id="water">Water</button>
+		<button value="Pepsi" id="pepsi">Pepsi</button>
+		<br>
+		<button value="cancel" id="cancel" onclick="clearTally()">Cancel</button>
+		
+		
+		<h2>Total Entered: R<span id="paid">0.00</span></h2>
+		<h2 id="message" >Insert Money First. Please Select a Drink</h2>
+		
+		<script src="vending.js"></script>
+	</body>
+</html>
