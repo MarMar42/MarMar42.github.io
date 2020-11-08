@@ -6,36 +6,54 @@
 		<http-equiv="X-UA-Compatible" content="ie-edge" />
 		<title> Vending Machine</title>
 	</head>
+	<style>
+		table, th, td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	}
+	th, td {
+	  padding: 5px;
+	}
+	th {
+	  text-align: left;
+	}
+	</style>
 	<body>
 		<h1>Vending Machine</h1>
-		<table style="width:100%">
+		<button value="Reset All" id="resetAll" onclick="resetAll()" >Refresh All Data</button>
+		<br>
+		<br>
+		<table name="Table" id="Table"  style="width:100%">
 			<tr>
-			<th>Beverage</th>
-			<th>Price</th>
-			<th>Amount Remaining</th>
+				<th>Beverage</th>
+				<th>Price (R)</th>
+				<th>In Stock</th>
 			</tr>
 			<tr>
-			<td>Coke</td>
-			<td>R10.00</td>
-			<td>5</td>
+				<td>Coke</td>
+				<td>10.00</td>
+				<td>5</td>
 			</tr>
 			<tr>
-			<td>Sprite</td>
-			<td>R10</td>
-			<td>2</td>
+				<td>Sprite</td>
+				<td>10.00</td>
+				<td>2</td>
 			</tr>
 			<tr>
-			<td>Water</td>
-			<td>R5.50</td>
-			<td>12</td>
+				<td>Water</td>
+				<td>5.50</td>
+				<td>12</td>
 			</tr>
 			<tr>
-			<td>Pepsi</td>
-			<td>R9.50</td>
-			<td>0</td>
+				<td>Pepsi</td>
+				<td>9.50</td>
+				<td>0</td>
 			</tr>
 		</table> 
-
+		<br>
+		<button value="Reset Stock" id="resetStock" onclick="resetProducts()" >Reset Stock</button>
+		<br>
+		<br>
 		<form>
 			<span>50c</span> 
 			<input 
@@ -79,10 +97,11 @@
 			
 		</form>
 		
-		<button value="Coke" id="coke">Coke</button>
-		<button value="Sprite" id="sprite">Sprite</button>
-		<button value="Water" id="water">Water</button>
-		<button value="Pepsi" id="pepsi">Pepsi</button>
+		<button value="Coke" id="coke" onclick="buyCoke()" >Coke</button>
+		<button value="Sprite" id="sprite" onclick="buySprite()" >Sprite</button>
+		<button value="Water" id="water" onclick="buyWater()" >Water</button>
+		<button value="Pepsi" id="pepsi" onclick="buyPepsi()">Pepsi</button>
+		<br>
 		<br>
 		<button value="cancel" id="cancel" onclick="clearTally()">Cancel</button>
 		

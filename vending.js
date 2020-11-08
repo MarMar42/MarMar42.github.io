@@ -4,12 +4,17 @@ var total = 0;
 var msg = "";
 var messageEl = document.getElementById("message");
 
-var drinks = ["Coke","Sprite","Water","Pepsi"];
+var myTable = document.getElementById('Table');
 
 const currency_fifty = 0.5;
 const currency_one = 1;
 const currency_two = 2;
 const currency_five = 5;
+
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
 
 function getTotal(){
 	var num_fifty = Number(document.getElementById("fifty_cent").value);
@@ -27,19 +32,122 @@ function tally(){
 	document.getElementById("paid").innerHTML = moneyInserted;
 }
 
+
+function clearInput(){
+	document.getElementById("paid").innerHTML = "0.00";
+	document.getElementById("fifty_cent").value = 0;
+	document.getElementById("one_rand").value = 0;
+	document.getElementById("two_rand").value = 0;
+	document.getElementById("five_rand").value = 0;
+}
+
 function clearTally(){
 	getTotal();
+	clearInput();
 	if (total > 0){
 		msg = "Transaction cancelled. R" + total.toFixed(2) + " has been returned.";
-		document.getElementById("paid").innerHTML = "0.00";
-		document.getElementById("fifty_cent").value = 0;
-		document.getElementById("one_rand").value = 0;
-		document.getElementById("two_rand").value = 0;
-		document.getElementById("five_rand").value = 0;
 		messageEl.innerHTML = msg;
 	}
 	else if (total == 0){
 		msg = "Insert Money First. Please Select a Drink";
 		messageEl.innerHTML = msg;
 	}
+}
+
+function resetProducts(){
+	myTable.rows[1].cells[2].innerHTML = 5;
+	myTable.rows[2].cells[2].innerHTML = 2;
+	myTable.rows[3].cells[2].innerHTML = 12;
+	myTable.rows[4].cells[2].innerHTML = 0;
+}
+
+function resetAll(){
+	msg = "Resetting Data...";
+	messageEl.innerHTML = msg;
+
+	setTimeout(resetProducts(),30000);
+	clearInput();
+	msg = "Insert Money First. Please Select a Drink";
+	messageEl.innerHTML = msg;
+}
+
+function buyCoke(){
+	var stock = Number(myTable.rows[1].cells[2].innerHTML);
+	var price = Number(myTable.rows[1].cells[1].innerHTML);
+	
+	getTotal();
+	if (stock == 0) {
+		msg = "Item Out of Stock";
+	}
+	else if (price > total){
+		msg = "Insufficient Funds. Please Add More";
+	}
+	else{
+		msg = "Purchased " + myTable.rows[1].cells[0].innerHTML + ". " + "Change: R" + (total - price);
+		myTable.rows[1].cells[2].innerHTML = stock - 1;
+		clearInput();
+	}
+	messageEl.innerHTML = msg;
+	
+}
+
+function buySprite(){
+	var stock = Number(myTable.rows[2].cells[2].innerHTML);
+	var price = Number(myTable.rows[2].cells[1].innerHTML);
+	
+	getTotal();
+	if (stock == 0) {
+		msg = "Item Out of Stock";
+	}
+	else if (price > total){
+		msg = "Insufficient Funds. Please Add More";
+	}
+	else{
+		msg = "Purchased " + myTable.rows[2].cells[0].innerHTML + ". " + "Change: R" + (total - price);
+		myTable.rows[2].cells[2].innerHTML = stock - 1;
+		clearInput();
+	}
+	messageEl.innerHTML = msg;
+}
+
+
+function buyWater(){
+	var stock = Number(myTable.rows[3].cells[2].innerHTML);
+	var price = Number(myTable.rows[3].cells[1].innerHTML);
+	
+	getTotal();
+	if (stock == 0) {
+		msg = "Item Out of Stock";
+	}
+	else if (price > total){
+		msg = "Insufficient Funds. Please Add More";
+	}
+	else{
+		msg = "Purchased " + myTable.rows[3].cells[0].innerHTML + ". " + "Change: R" + (total - price);
+		myTable.rows[3].cells[2].innerHTML = stock - 1;
+		clearInput();
+	}
+	messageEl.innerHTML = msg;
+	
+}
+
+
+function buyPepsi(){
+	var stock = Number(myTable.rows[4].cells[2].innerHTML);
+	var price = Number(myTable.rows[4].cells[1].innerHTML);
+	
+	getTotal();
+	if (stock == 0) {
+		msg = "Item Out of Stock";
+	}
+	else if (price > total){
+		msg = "Insufficient Funds. Please Add More";
+	}
+	else{
+		msg = "Purchased " + myTable.rows[4].cells[0].innerHTML + ". " + "Change: R" + (total - price);
+		myTable.rows[4].cells[2].innerHTML = stock - 1;
+		clearInput();
+	}
+	messageEl.innerHTML = msg;
+	
 }
