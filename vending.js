@@ -29,7 +29,7 @@ function tally(){
 
 function clearTally(){
 	getTotal();
-	if (total != 0){
+	if (total > 0){
 		msg = "Transaction cancelled. R" + total.toFixed(2) + " has been returned.";
 		document.getElementById("paid").innerHTML = "0.00";
 		document.getElementById("fifty_cent").value = 0;
@@ -38,7 +38,7 @@ function clearTally(){
 		document.getElementById("five_rand").value = 0;
 		messageEl.innerHTML = msg;
 	}
-	else{
+	else if (total == 0){
 		msg = "Insert Money First. Please Select a Drink";
 		messageEl.innerHTML = msg;
 	}
