@@ -10,10 +10,14 @@ const currency_fifty = 0.5;
 const currency_one = 1;
 const currency_two = 2;
 const currency_five = 5;
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
-function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
 }
 
 function getTotal(){
@@ -62,10 +66,8 @@ function resetProducts(){
 }
 
 function resetAll(){
-	msg = "Resetting Data...";
-	messageEl.innerHTML = msg;
-
-	setTimeout(resetProducts(),30000);
+	alert("Resetting Data...");
+	resetProducts();
 	clearInput();
 	msg = "Insert Money First. Please Select a Drink";
 	messageEl.innerHTML = msg;
