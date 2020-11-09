@@ -59,6 +59,7 @@ function clearTally(){
 }
 
 function resetProducts(){
+	alert("Resetting Stock...");
 	myTable.rows[1].cells[2].innerHTML = 5;
 	myTable.rows[2].cells[2].innerHTML = 2;
 	myTable.rows[3].cells[2].innerHTML = 12;
